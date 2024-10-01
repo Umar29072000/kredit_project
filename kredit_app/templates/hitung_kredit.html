@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Kredit dan Perhitungan Angsuran</title>
+    <!-- Include Bootstrap CSS untuk styling form -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Simulasi Kredit dan Perhitungan Angsuran</h2>
+        <form method="POST">
+            <!-- Tambahkan CSRF token untuk keamanan form -->
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="kontrak_no">Kontrak No:</label>
+                {{ form.kontrak_no }}
+            </div>
+            <div class="form-group">
+                <label for="client_name">Client Name:</label>
+                {{ form.client_name }}
+            </div>
+            <div class="form-group">
+                <label for="harga_mobil">Harga Mobil (Rp):</label>
+                {{ form.harga_mobil }}
+            </div>
+            <div class="form-group">
+                <label for="dp_percentage">DP Percentage (%):</label>
+                {{ form.dp_percentage }}
+            </div>
+            <div class="form-group">
+                <label for="tenor_tahun">Tenor (Tahun):</label>
+                {{ form.tenor_tahun }}
+            </div>
+            <div class="form-group">
+                <label for="bunga_tahunan">Bunga Tahunan (%):</label>
+                {{ form.bunga_tahunan }}
+            </div>
+            <div class="form-group">
+                <label for="tgl_mulai">Tanggal Mulai (dd/mm/yyyy):</label>
+                {{ form.tgl_mulai }}
+            </div>
+            <button type="submit" class="btn btn-primary">Hitung</button>
+        </form>
+
+        <!-- Hasil Perhitungan -->
+        <div class="mt-4">
+            {% if angsuran_per_bulan %}
+                <h3>Angsuran per bulan: Rp{{ angsuran_per_bulan|floatformat:0 }}</h3>
+            {% endif %}
+            
+            {% if total_belum_terbayar %}
+                <h3>Total Belum Terbayar: Rp{{ total_belum_terbayar|floatformat:0 }}</h3>
+            {% endif %}
+            
+            {% if denda_total %}
+                <h3>Total Denda: Rp{{ denda_total|floatformat:0 }}</h3>
+            {% endif %}
+        </div>
+        
+        <!-- Menampilkan pesan kesalahan jika form tidak valid -->
+        {% if form.errors %}
+            <div class="alert alert-danger mt-4">
+                <h4>Terjadi kesalahan:</h4>
+                <ul>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
