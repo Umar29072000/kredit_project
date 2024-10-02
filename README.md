@@ -15,3 +15,34 @@ Make sure you have Python and pip installed on your system. To set up this proje
 1. **Clone the repository:**
    ```bash
    git clone <REPOSITORY_URL>
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd kredit_project-main
+   ```
+
+3. **Create a virtual environment:**
+   ```bash
+   python -m venv env
+   ```
+
+4. **Activate the virtual environment:**
+   ```bash
+   env\Scripts\activate
+   ```
+
+5. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+6. **Migrate the database:**
+   ```bash
+   python manage.py migrate
+   ```
+
+7. **Run the server:**
+   ```bash
+   python manage.py runserver
+   ```
