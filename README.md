@@ -12,37 +12,53 @@ This project is a web application built with Django to calculate and manage cred
 
 Make sure you have Python and pip installed on your system. To set up this project, follow these steps:
 
-1. **Clone the repository:**
-   ```bash
-   git clone <REPOSITORY_URL>
-   ```
+### Step 1: Clone the Repository
 
-2. **Navigate to the project directory:**
-   ```bash
-   cd kredit_project-main
-   ```
+Create a free directory:
+```bash
+mkdir my_project
+```
 
-3. **Create a virtual environment:**
-   ```bash
-   python -m venv env
-   ```
+```bash
+cd my_project
+```
 
-4. **Activate the virtual environment:**
-   ```bash
-   env\Scripts\activate
-   ```
+If you're working with a repository, clone it using the following command:
 
-5. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+git clone <repository_url>
+```
 
-6. **Migrate the database:**
-   ```bash
-   python manage.py migrate
-   ```
+### Step 2: Create a Virtual Environment
 
-7. **Run the server:**
-   ```bash
-   python manage.py runserver
-   ```
+```bash
+python -m venv venv
+```
+
+Open emulator, example Visual Studio Code:
+
+```bash
+code .
+```
+
+Open terminal and run activate Virtual Environment:
+
+```bash
+.\venv\Scripts\activate
+```
+
+```bash
+cd kredit_project
+```
+
+### Step 3: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Run the Development Server
+
+```bash
+python manage.py runserver
+```
